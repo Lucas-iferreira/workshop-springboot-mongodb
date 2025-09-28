@@ -1,6 +1,7 @@
 package com.lucasiago.workshopmongo.services;
 
 import com.lucasiago.workshopmongo.entities.User;
+import com.lucasiago.workshopmongo.entities.dto.UserDTO;
 import com.lucasiago.workshopmongo.repositories.UserRepository;
 import com.lucasiago.workshopmongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,14 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public User insert(User obj) {
+        return userRepository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO dto) {
+        return new User(dto.getId(), dto.getName(), dto.getEmail());
+
     }
 }
