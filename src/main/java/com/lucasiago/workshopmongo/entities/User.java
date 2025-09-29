@@ -1,13 +1,12 @@
 package com.lucasiago.workshopmongo.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Document(collection = "user")
 public class User implements Serializable {
@@ -20,6 +19,8 @@ public class User implements Serializable {
     private String name;
     private String email;
 
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList<>();
 
     public User() {
     }
@@ -28,6 +29,10 @@ public class User implements Serializable {
         this.id = id;
         this.name = name;
         this.email = email;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
     public String getId() {
