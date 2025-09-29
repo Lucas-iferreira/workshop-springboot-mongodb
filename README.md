@@ -13,7 +13,7 @@ Este projeto é uma API RESTful desenvolvida como parte de um workshop prático 
 - Consulta por nome e data com uso de @Query
 
 ## Modelo conceitual
-![Modelo Conceitual](assets/modelo-conceitual.jpeg)
+![Modelo Conceitual](assets/domain-model.jpeg)
 
 # Tecnologias utilizadas
 - Java 17
