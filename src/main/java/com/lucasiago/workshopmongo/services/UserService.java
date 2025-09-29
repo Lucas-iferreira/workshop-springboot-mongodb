@@ -31,6 +31,17 @@ public class UserService {
 
     public User fromDTO(UserDTO dto) {
         return new User(dto.getId(), dto.getName(), dto.getEmail());
+    }
 
+    public void delete(String id) {
+        findById(id);
+        userRepository.deleteById(id);
+    }
+
+    public User update(String id, User user) {
+        User novoObj = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        novoObj.setName(user.getName());
+        novoObj.setEmail(user.getEmail());
+        return userRepository.save(novoObj);
     }
 }
