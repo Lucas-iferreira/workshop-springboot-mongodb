@@ -1,12 +1,15 @@
 package com.lucasiago.workshopmongo.entities;
 
 import com.lucasiago.workshopmongo.entities.dto.AuthorDTO;
+import com.lucasiago.workshopmongo.entities.dto.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "post")
@@ -20,6 +23,7 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author;
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -32,6 +36,9 @@ public class Post implements Serializable {
         this.author = author;
     }
 
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
 
     public AuthorDTO getAuthor() {
         return author;
